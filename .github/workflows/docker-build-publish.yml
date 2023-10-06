@@ -1,0 +1,22 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t yugarcia/desafio_imagen:latest .
+          docker push yugarcia/desafio_imagen:latest
