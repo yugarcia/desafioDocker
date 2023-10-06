@@ -14,4 +14,8 @@
 
 - Comparto la imagen en docker hub
   https://hub.docker.com/repository/docker/yugarcia/desafio_imagen/general
+
+
+
+kubectl apply -f deployment.yaml
   
